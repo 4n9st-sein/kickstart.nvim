@@ -288,7 +288,48 @@ require('lazy').setup({
       },
     },
   },
-
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        theme = 'hyper', -- theme is doom and hyper default is hyper
+        disable_move = false, -- default is false disable move keymap for hyper
+        shortcut_type = 'letter', -- shortcut type 'letter' or 'number'
+        shuffle_letter = false, -- default is false, shortcut 'letter' will be randomize, set to false to have ordered letter
+        config = {
+          header = {
+            '██╗███╗   ██╗███████╗ █████╗ ███╗   ██╗██╗████████╗██╗   ██╗',
+            '██║████╗  ██║██╔════╝██╔══██╗████╗  ██║██║╚══██╔══╝╚██╗ ██╔╝',
+            '██║██╔██╗ ██║███████╗███████║██╔██╗ ██║██║   ██║    ╚████╔╝ ',
+            '██║██║╚██╗██║╚════██║██╔══██║██║╚██╗██║██║   ██║     ╚██╔╝  ',
+            '██║██║ ╚████║███████║██║  ██║██║ ╚████║██║   ██║      ██║   ',
+            '╚═╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝      ╚═╝   ',
+          },
+          shortcut = {
+            {
+              desc = ' New File',
+              group = '@property',
+              action = 'ene | startinsert',
+              key = 'n',
+            },
+            {
+              desc = ' Find File',
+              group = 'Label',
+              action = 'Telescope find_files',
+              key = 'f',
+            },
+          },
+        },
+        hide = {
+          statusline = true, -- hide statusline default is true
+          tabline = false, -- hide the tabline
+          winbar = true, -- hide winbar
+        },
+      }
+    end,
+    dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+  },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
